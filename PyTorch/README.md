@@ -1,4 +1,6 @@
-pip install fastapi uvicorn torch==1.12.0
+#pip install fastapi uvicorn torch==1.12.0
+
+podman run -p 8000:8000 [containerfilename]
 
 curl http://127.0.0.1:8000/test
 

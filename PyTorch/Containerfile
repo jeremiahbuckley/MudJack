@@ -1,0 +1,23 @@
+FROM registry.access.redhat.com/ubi8/python-39:latest
+
+# Set the working directory inside the container
+WORKDIR /app
+
+#RUN pip3 install fastapi uvicorn torch==1.12.0
+
+COPY main.py .
+
+# Copy the application code into the container
+COPY main.py .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir fastapi uvicorn
+
+# Install PyTorch version 1.12.0 (CPU-only version)
+RUN pip install torch==1.12.0+cpu torchvision==0.13.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
+
+# Expose port 8000 to allow external connections
+EXPOSE 8000
+
+# Command to run the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
