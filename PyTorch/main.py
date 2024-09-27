@@ -129,7 +129,7 @@ def test_optim_lbfgs():
     optimizer.step(closure)
 
 def test_triangular_solve():
-    b = torch.randn(2, 3)
+    b = torch.randn(3, 3)
     A = torch.randn(3, 3)
     torch.triangular_solve(b, A)
 
