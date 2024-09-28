@@ -1,0 +1,30 @@
+# Use the official Python image with a specific version
+FROM python:3.8-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Install system dependencies required for JAX
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libatlas-base-dev \
+    libblas-dev \
+    liblapack-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy the application code into the container
+COPY main.py .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir fastapi uvicorn jax==0.4.9
+
+# Install jaxlib based on CPU-only or CUDA version
+# For CPU-only:
+RUN pip install --no-cache-dir jaxlib==0.4.9
+
+# Expose port 8000 to allow external connections
+EXPOSE 8000
+
+# Command to run the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+

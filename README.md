@@ -17,8 +17,9 @@ Easiest place to start, try to replicate the paper. They have 3 criteria:
 2. Partial failure to run: Some but not all the benchmark tests for a given function fail to run.  
 3. Intolerable latency: High latencies may be prohibitively inefficient, which may impair usability even if the function technically is able to run on multiple hardware types. (*note: 'intolerable' may very well be different per function, may need to have an intolerable.txt file that determines the value for each function.)  
   
-To start with: JAX version 0.4.8, PyTorch version 1.12.0, and TensorFlow version 2.11.0.  
-  
+To start with: JAX version 0.4.9*, PyTorch version 1.12.0, and TensorFlow version 2.11.0.  
+* Note the paper uses JAX 0.4.8, but jaxlib (a critical supporting package of jax) 0.4.8 has been pulled. 0.4.9 is available.
+
 In the paper, they do some data analysis to find the best functions to test. As a dumb first approximation, we can just test against the functions they list. Obviously, future improvements would need to re-analyze to find the appropriate functions for each version.  
 
 #PyTorch  
@@ -119,4 +120,65 @@ tf.compat.v1.train.get_global_step
 tf.estimator.LoggingTensorHook
 tf.compat.v1.Session.run
 
- 
+#JAX
+jax.named_call
+jax.numpy.array
+jax.numpy.zeros
+jax.lax.select
+jax._src.interpreters.partial_eval
+jax.core.eval_context
+jax.lax.all_gather
+jax.lax.integer_pow
+jax.numpy.size
+jax.tree_util.Partial
+jax.make_jaxpr
+jax.numpy.log
+jax.numpy.isscalar
+jax.tree_util.tree_unflatten
+jax.vjp
+jax.numpy.einsum_path
+jax.numpy.delete
+jax._src.interpreters.partial_eval.trace_to_jax_pr_dynamic
+jax.scipy.stats.norm.cdf
+jax.lax.stop_gradient
+jax.numpy.reshape
+jax.numpy.average
+jax.disable_jit
+jax.tree_util.tree_map
+jax._src.core.get_aval
+jax.scipy.signal.convolve2d
+jax.lax.erf
+jax.scipy.special.ndtr
+jax.numpy.convolve
+jax.numpy.linalg.svd
+jax.numpy.compress
+jax.numpy.stack
+jax.scipy.special.i0
+jax.numpy.var
+jax.numpy.tril
+jax.numpy.sum
+jax.numpy.triu_indices
+jax.numpy.power
+jax.numpy.ones
+jax.lax.pmax
+jax.numpy.max
+jax.scipy.linalg.lu
+jax.numpy.prod
+jax.lax.slice_in_dim
+jax.lax.bitwise_and
+jax.numpy.tril_indices_from
+jax.numpy.arange
+jax.numpy.add
+jax.numpy.all
+jax.scipy.special.gammaln
+jax.numpy.mean
+jax.numpy.flip
+jax.numpy.split
+jax.numpy.fliplr
+jax.lax.top_k
+jax.numpy.exp
+jax.lax.ge
+jax.nn.one_hot
+jax.random.PRNGKey
+jax.numpy.cos
+jax.numpy.sqrt 
